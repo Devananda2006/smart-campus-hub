@@ -64,3 +64,18 @@ header {
         flex-direction: column;
     }
 }
+.highlight {
+    color: red;
+    background-color: #fff3cd;
+    font-size: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+#eventMessage {
+    margin-top: 20px;
+    padding: 12px;
+    background-color: #590481;
+    border-radius: 8px;
+    font-weight: bold;
+}

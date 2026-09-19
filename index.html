@@ -1,248 +1,351 @@
 <!DOCTYPE html>
-
 <html>
 
 <head>
+
     <title>Smart Campus Hub</title>
+
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-```
-<header>
-    <h1>Smart Campus Hub</h1>
+    <!-- ========================= -->
+    <!-- Header -->
+    <!-- ========================= -->
 
-    <nav>
-        <ul>
-            <li>Home</li>
-            <li>Events</li>
-            <li>Clubs</li>
-            <li>Contact</li>
-        </ul>
-    </nav>
-</header>
+    <header>
 
+        <h1>Smart Campus Hub</h1>
 
-<main>
+        <nav>
 
-    <!-- Hero Section -->
-    <section>
-        <p>Everything happening on your campus, in one place.</p>
+            <ul>
 
-        <button id="exploreBtn">
-            Explore Events
-        </button>
-    </section>
+                <li>Home</li>
+                <li>Events</li>
+                <li>Clubs</li>
+                <li>Contact</li>
 
+            </ul>
 
-    <!-- Upcoming Events -->
-    <section>
+        </nav>
 
-        <h2>Upcoming Events</h2>
+    </header>
 
-        <div class="event-list">
 
-            <article class="event">
 
-                <h3>Tech Fest</h3>
+    <main>
 
-                <p>Date: March 15, 2026</p>
 
-                <p>
-                    A festival celebrating technology and innovation.
-                </p>
+        <!-- ========================= -->
+        <!-- Hero Section -->
+        <!-- ========================= -->
 
-                <button>
-                    View Details
-                </button>
+        <section>
 
-            </article>
+            <p>
+                Everything happening on your campus, in one place.
+            </p>
 
-
-            <article class="event">
-
-                <h3>Hackathon</h3>
-
-                <p>Date: April 20, 2026</p>
-
-                <p>
-                    A 24-hour hackathon for students to showcase their skills.
-                </p>
-
-                <button>
-                    View Details
-                </button>
-
-            </article>
-
-
-            <article class="event">
-
-                <h3>Cultural Fest</h3>
-
-                <p>Date: May 10, 2026</p>
-
-                <p>
-                    A celebration of diverse cultures and traditions.
-                </p>
-
-                <button>
-                    View Details
-                </button>
-
-            </article>
-
-        </div>
-
-    </section>
-
-
-    <!-- Event Registration -->
-    <section>
-
-        <h2>Register for an Event</h2>
-
-        <form>
-
-            <label for="name">
-                Name:
-            </label>
-
-            <input
-                type="text"
-                id="name"
-                name="name"
-                required
-            >
-
-
-            <label for="email">
-                Email:
-            </label>
-            <input
-                type="email"
-                id="email"
-                name="email"
-                required
-            >
-
-
-            <label for="department">
-                Select Department:
-            </label>
-
-            <select
-                id="department"
-                name="department"
-                required
-            >
-
-                <option value="">
-                    Select Department
-                </option>
-
-                <option value="computer-science">
-                    Computer Science
-                </option>
-
-                <option value="electrical-engineering">
-                    Electrical Engineering
-                </option>
-
-                <option value="mechanical-engineering">
-                    Mechanical Engineering
-                </option>
-
-            </select>
-
-
-            <label for="year">
-                Select Year:
-            </label>
-
-            <select
-                id="year"
-                name="year"
-                required
-            >
-
-                <option value="">
-                    Select Year
-                </option>
-
-                <option value="1">S1</option>
-                <option value="2">S2</option>
-                <option value="3">S3</option>
-                <option value="4">S4</option>
-
-            </select>
-
-
-            <label for="reason">
-                Why do you want to attend?
-            </label>
-
-            <textarea
-                id="reason"
-                name="reason"
-                rows="4"
-                required
-            ></textarea>
-
-
-            <label for="event">
-                Event:
-            </label>
-
-            <select
-                id="event"
-                name="event"
-                required
-            >
-
-                <option value="">
-                    Select Event
-                </option>
-
-                <option value="tech-fest">
-                    Tech Fest
-                </option>
-
-                <option value="hackathon">
-                    Hackathon
-                </option>
-
-                <option value="cultural-fest">
-                    Cultural Fest
-                </option>
-
-            </select>
-
-
-            <button type="submit">
-                Register
+            <button id="exploreBtn">
+                View Campus Events
             </button>
 
-        </form>
-
-    </section>
-
-</main>
+        </section>
 
 
-<!-- Footer -->
-<footer>
 
-    <p>
-        Smart Campus Hub
-    </p>
+        <!-- ========================= -->
+        <!-- Upcoming Events -->
+        <!-- ========================= -->
 
-</footer>
+        <section>
+
+            <h2>Upcoming Events</h2>
 
 
-<script src="script.js"></script>
-```
+            <div class="event-list">
+
+
+                <!-- Tech Fest -->
+
+                <article class="event">
+
+                    <h3>Tech Fest</h3>
+
+                    <p>
+                        Date: March 15, 2026
+                    </p>
+
+                    <p>
+                        A festival celebrating technology
+                        and innovation.
+                    </p>
+
+                    <button>
+                        View Details
+                    </button>
+
+                </article>
+
+
+
+                <!-- Hackathon -->
+
+                <article class="event">
+
+                    <h3>Hackathon</h3>
+
+                    <p>
+                        Date: April 20, 2026
+                    </p>
+
+                    <p>
+                        A 24-hour hackathon for students
+                        to showcase their skills.
+                    </p>
+
+                    <button>
+                        View Details
+                    </button>
+
+                </article>
+
+
+
+                <!-- Cultural Fest -->
+
+                <article class="event">
+
+                    <h3>Cultural Fest</h3>
+
+                    <p>
+                        Date: May 10, 2026
+                    </p>
+
+                    <p>
+                        A celebration of diverse cultures
+                        and traditions.
+                    </p>
+
+                    <button>
+                        View Details
+                    </button>
+
+                </article>
+
+
+            </div>
+
+
+            <!-- Event message appears here -->
+
+            <p id="eventMessage"></p>
+
+
+        </section>
+
+
+
+        <!-- ========================= -->
+        <!-- Event Registration -->
+        <!-- ========================= -->
+
+        <section>
+
+            <h2>Register for an Event</h2>
+
+
+            <form>
+
+
+                <!-- Name -->
+
+                <label for="name">
+                    Name:
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                >
+
+
+
+                <!-- Email -->
+
+                <label for="email">
+                    Email:
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                >
+
+
+
+                <!-- Department -->
+
+                <label for="department">
+                    Select Department:
+                </label>
+
+                <select
+                    id="department"
+                    name="department"
+                    required
+                >
+
+                    <option value="">
+                        Select Department
+                    </option>
+
+                    <option value="computer-science">
+                        Computer Science
+                    </option>
+
+                    <option value="electrical-engineering">
+                        Electrical Engineering
+                    </option>
+
+                    <option value="mechanical-engineering">
+                        Mechanical Engineering
+                    </option>
+
+                </select>
+
+
+
+                <!-- Year -->
+
+                <label for="year">
+                    Select Year:
+                </label>
+
+                <select
+                    id="year"
+                    name="year"
+                    required
+                >
+
+                    <option value="">
+                        Select Year
+                    </option>
+
+                    <option value="1">
+                        S1
+                    </option>
+
+                    <option value="2">
+                        S2
+                    </option>
+
+                    <option value="3">
+                        S3
+                    </option>
+
+                    <option value="4">
+                        S4
+                    </option>
+
+                </select>
+
+
+
+                <!-- Reason -->
+
+                <label for="reason">
+                    Why do you want to attend?
+                </label>
+
+                <textarea
+                    id="reason"
+                    name="reason"
+                    rows="4"
+                    required
+                ></textarea>
+
+
+
+                <!-- Event -->
+
+                <label for="event">
+                    Event:
+                </label>
+
+                <select
+                    id="event"
+                    name="event"
+                    required
+                >
+
+                    <option value="">
+                        Select Event
+                    </option>
+
+                    <option value="Tech Fest">
+                        Tech Fest
+                    </option>
+
+                    <option value="Hackathon">
+                        Hackathon
+                    </option>
+
+                    <option value="Cultural Fest">
+                        Cultural Fest
+                    </option>
+
+                </select>
+
+
+
+                <!-- Register -->
+
+                <button type="submit">
+                    Register
+                </button>
+
+
+            </form>
+
+
+            <!-- Registration message -->
+
+            <p id="registrationMessage"></p>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ========================= -->
+    <!-- Footer -->
+    <!-- ========================= -->
+
+    <footer>
+
+        <p>
+            Smart Campus Hub
+        </p>
+
+    </footer>
+
+
+
+    <!-- JavaScript -->
+
+    <script src="script.js"></script>
 
 </body>
 
