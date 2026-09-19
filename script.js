@@ -16,6 +16,7 @@ form.addEventListener("submit", function (event) {
     const department = document.getElementById("department").value;
     const year = document.getElementById("year").value;
     const reason = document.getElementById("reason").value;
+    const eventName = document.getElementById("event").value;
 
 
     if (
@@ -23,7 +24,8 @@ form.addEventListener("submit", function (event) {
         email === "" ||
         department === "" ||
         year === "" ||
-        reason === ""
+        reason === "" ||
+        eventName === ""
     ) {
         alert("Please fill in all the fields.");
         return;
@@ -34,7 +36,7 @@ form.addEventListener("submit", function (event) {
 
 Welcome, ${name}.
 
-You registered for Tech Fest.`);
+You registered for ${eventName}.`);
 
 
     form.reset();
