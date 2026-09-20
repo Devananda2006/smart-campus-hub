@@ -1,66 +1,67 @@
-/* =========================
-   RESET
-========================= */
+/* ========================================
+   SMART CAMPUS OS - STYLE.CSS
+   DAY 7 - FINAL VERSION
+======================================== */
+
+
+/* ========================================
+   1. GLOBAL STYLES
+======================================== */
 
 * {
     box-sizing: border-box;
 }
 
-
-/* =========================
-   BODY
-========================= */
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     font-family: Arial, sans-serif;
-
     margin: 0;
-
     background-color: #f4f4f4;
-
     color: #222;
 }
 
 
-/* =========================
-   HEADER
-========================= */
+/* ========================================
+   2. HEADER
+======================================== */
 
 header {
     background-color: #6c37a8;
-
     color: white;
 
     padding: 20px 40px;
 
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-}
 
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
 
 .logo h1 {
     margin: 0;
-
-    font-size: 32px;
+    font-size: 30px;
 }
 
 
-/* =========================
-   NAVIGATION
-========================= */
+/* ========================================
+   3. NAVIGATION
+======================================== */
 
 nav ul {
     display: flex;
-
     gap: 25px;
 
     list-style: none;
 
     margin: 0;
-
     padding: 0;
 }
 
@@ -72,52 +73,77 @@ nav a {
     font-weight: bold;
 
     cursor: pointer;
+
+    transition: opacity 0.2s ease;
 }
 
 nav a:hover {
-    text-decoration: underline;
+    opacity: 0.75;
 }
 
 
-/* =========================
-   MAIN
-========================= */
+/* ========================================
+   4. MAIN CONTAINER
+======================================== */
 
 main {
     max-width: 1100px;
 
     margin: 0 auto;
 
-    padding: 30px 20px;
+    padding: 40px 20px;
 }
 
 
-/* =========================
-   HERO
-========================= */
+/* ========================================
+   5. HERO SECTION
+======================================== */
 
 .hero {
     background-color: white;
 
-    padding: 40px;
+    padding: 60px 40px;
 
-    border-radius: 12px;
+    border-radius: 16px;
 
-    margin-bottom: 40px;
+    margin-bottom: 45px;
 
     text-align: center;
+
+    border: 1px solid #eee;
+
+    box-shadow:
+        0 5px 18px rgba(0, 0, 0, 0.08);
+}
+
+.hero::before {
+    content: "SMART CAMPUS";
+
+    display: block;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    letter-spacing: 3px;
+
+    color: #6c37a8;
+
+    margin-bottom: 15px;
 }
 
 .hero-text {
-    font-size: 22px;
+    font-size: 25px;
 
-    margin-bottom: 25px;
+    margin-bottom: 30px;
+
+    color: #444;
 }
 
 
-/* =========================
-   BUTTONS
-========================= */
+/* ========================================
+   6. BUTTONS
+======================================== */
 
 button {
     background-color: #6c37a8;
@@ -126,47 +152,143 @@ button {
 
     border: none;
 
-    border-radius: 6px;
+    border-radius: 7px;
 
     padding: 12px 22px;
 
     cursor: pointer;
 
     font-size: 15px;
+
+    font-weight: bold;
+
+    transition:
+        transform 0.2s ease,
+        background-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 button:hover {
     background-color: #542789;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 12px rgba(0, 0, 0, 0.15);
+}
+
+button:active {
+    transform: translateY(0);
 }
 
 
-/* =========================
-   SECTION HEADINGS
-========================= */
+/* ========================================
+   7. SECTIONS
+======================================== */
 
 section {
-    margin-bottom: 45px;
+    margin-bottom: 50px;
+
+    scroll-margin-top: 100px;
 }
 
 section h2 {
     font-size: 30px;
 
-    margin-bottom: 20px;
+    margin-bottom: 22px;
+
+    color: #333;
+
+    position: relative;
+
+    padding-bottom: 10px;
+}
+
+section h2::after {
+    content: "";
+
+    display: block;
+
+    width: 45px;
+
+    height: 4px;
+
+    background-color: #6c37a8;
+
+    border-radius: 10px;
+
+    margin-top: 8px;
 }
 
 
-/* =========================
-   EVENT LIST
-========================= */
+/* ========================================
+   8. EVENT CONTROLS
+======================================== */
+
+.event-controls {
+    display: flex;
+
+    gap: 12px;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.event-controls #searchInput {
+    flex: 1;
+
+    margin-bottom: 0;
+}
+
+.event-controls button {
+    white-space: nowrap;
+
+    margin: 0;
+}
+
+
+/* ========================================
+   9. SEARCH INPUT
+======================================== */
+
+#searchInput {
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    background-color: white;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#searchInput:focus {
+    outline: none;
+
+    border-color: #6c37a8;
+
+    box-shadow:
+        0 0 0 3px rgba(108, 55, 168, 0.12);
+}
+
+
+/* ========================================
+   10. EVENT LIST
+======================================== */
 
 .event-list {
     width: 100%;
+
+    margin-top: 10px;
 }
-
-
-/* =========================
-   DYNAMIC EVENTS
-========================= */
 
 #dynamicEvents {
     display: flex;
@@ -177,18 +299,18 @@ section h2 {
 }
 
 
-/* =========================
-   EVENT CARD
-========================= */
+/* ========================================
+   11. EVENT CARD
+======================================== */
 
 .event-card {
-    background-color: #6c37a8;
+    background-color: white;
 
-    color: white;
+    color: #222;
 
-    padding: 22px;
+    padding: 25px;
 
-    border-radius: 10px;
+    border-radius: 12px;
 
     flex: 1;
 
@@ -200,11 +322,27 @@ section h2 {
 
     justify-content: space-between;
 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    border-top: 5px solid #6c37a8;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.10);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
 
-/* EVENT TITLE */
+/* ========================================
+   12. EVENT CARD CONTENT
+======================================== */
 
 .event-card h3 {
     font-size: 22px;
@@ -212,91 +350,139 @@ section h2 {
     margin-top: 0;
 
     margin-bottom: 15px;
-}
-
-
-/* EVENT TEXT */
-
-.event-card p {
-    line-height: 1.5;
-
-    margin: 8px 0;
-}
-
-
-/* EVENT BUTTON */
-
-.event-card button {
-    background-color: white;
 
     color: #6c37a8;
+}
 
-    font-weight: bold;
+.event-card p {
+    line-height: 1.6;
+
+    margin: 8px 0;
+
+    color: #555;
+}
+
+
+/* ========================================
+   13. EVENT CARD BUTTON
+======================================== */
+
+.event-card button {
+    background-color: #6c37a8;
+
+    color: white;
 
     margin-top: 15px;
 }
 
 .event-card button:hover {
-    background-color: #eeeeee;
+    background-color: #542789;
 }
 
 
-/* =========================
-   EVENT MESSAGE
-========================= */
+/* ========================================
+   14. EVENT MESSAGE
+======================================== */
 
 #eventMessage {
     margin-top: 20px;
 
-    padding: 12px;
+    padding: 15px;
 
     background-color: #e8f5e9;
+
+    border-left: 5px solid #4caf50;
 
     border-radius: 8px;
 
     font-weight: bold;
+
+    color: #2e7d32;
 }
 
 
-/* =========================
-   FORM
-========================= */
+/* ========================================
+   15. NO EVENTS MESSAGE
+======================================== */
 
-form {
+#dynamicEvents > p {
+    width: 100%;
+
     background-color: white;
 
     padding: 25px;
 
     border-radius: 10px;
 
+    text-align: center;
+
+    color: #777;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ========================================
+   16. REGISTRATION FORM
+======================================== */
+
+form {
+    background-color: white;
+
+    padding: 30px;
+
+    border-radius: 12px;
+
     display: flex;
 
     flex-direction: column;
 
     gap: 10px;
+
+    box-shadow:
+        0 5px 18px rgba(0, 0, 0, 0.08);
 }
 
 
-/* =========================
-   INPUTS
-========================= */
+/* ========================================
+   17. FORM LABELS
+======================================== */
+
+label {
+    font-weight: bold;
+
+    margin-top: 8px;
+
+    color: #333;
+}
+
+
+/* ========================================
+   18. FORM INPUTS
+======================================== */
 
 input,
 select,
 textarea {
     width: 100%;
 
-    padding: 12px;
+    padding: 13px;
 
     border: 1px solid #ccc;
 
-    border-radius: 6px;
+    border-radius: 7px;
 
     font-size: 15px;
 
     font-family: inherit;
-}
 
+    background-color: white;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
 
 input:focus,
 select:focus,
@@ -304,57 +490,64 @@ textarea:focus {
     outline: none;
 
     border-color: #6c37a8;
+
+    box-shadow:
+        0 0 0 3px rgba(108, 55, 168, 0.12);
+}
+
+textarea {
+    resize: vertical;
 }
 
 
-/* =========================
-   LABELS
-========================= */
+/* ========================================
+   19. REGISTRATION BUTTON
+======================================== */
 
-label {
-    font-weight: bold;
-
-    margin-top: 8px;
+form button[type="submit"] {
+    margin-top: 12px;
 }
 
 
-/* =========================
-   REGISTRATION MESSAGE
-========================= */
+/* ========================================
+   20. REGISTRATION SUMMARY
+======================================== */
 
 #registrationMessage {
-    margin-top: 20px;
+    background-color: white;
 
-    padding: 12px;
-
-    background-color: #e8f5e9;
-
-    border-radius: 8px;
-
-    font-weight: bold;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-footer {
-    background-color: #6c37a8;
-
-    color: white;
-
-    text-align: center;
+    border-left: 5px solid #6c37a8;
 
     padding: 20px;
 
-    margin-top: 40px;
+    border-radius: 10px;
+
+    margin-top: 20px;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+#registrationMessage h3 {
+    margin-top: 0;
+
+    color: #6c37a8;
+
+    font-size: 22px;
+}
+
+#registrationMessage p {
+    margin: 8px 0;
+
+    color: #555;
+
+    line-height: 1.5;
 }
 
 
-/* =========================
-   HIGHLIGHT
-========================= */
+/* ========================================
+   21. HIGHLIGHT CLASS
+======================================== */
 
 .highlight {
     background-color: #fff3cd;
@@ -371,9 +564,32 @@ footer {
 }
 
 
-/* =========================
-   MOBILE
-========================= */
+/* ========================================
+   22. FOOTER
+======================================== */
+
+footer {
+    background-color: #6c37a8;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 25px;
+
+    margin-top: 50px;
+
+    border-top: 4px solid #542789;
+}
+
+footer p {
+    margin: 0;
+}
+
+
+/* ========================================
+   23. TABLET RESPONSIVE DESIGN
+======================================== */
 
 @media (max-width: 768px) {
 
@@ -383,36 +599,104 @@ footer {
         gap: 15px;
 
         text-align: center;
+
+        padding: 20px;
     }
 
+    .logo h1 {
+        font-size: 25px;
+    }
 
     nav ul {
         gap: 15px;
     }
 
+    main {
+        padding: 25px 15px;
+    }
+
+    .hero {
+        padding: 40px 20px;
+    }
+
+    .hero-text {
+        font-size: 20px;
+    }
+
+    section h2 {
+        font-size: 26px;
+    }
+
+
+    /* Event cards */
 
     #dynamicEvents {
         flex-direction: column;
     }
-
 
     .event-card {
         width: 100%;
     }
 
 
-    .hero {
-        padding: 25px 15px;
+    /* Event controls */
+
+    .event-controls {
+        flex-direction: column;
+
+        align-items: stretch;
     }
 
+    .event-controls #searchInput {
+        width: 100%;
+    }
+
+    .event-controls button {
+        width: 100%;
+    }
+
+
+    /* Form */
+
+    form {
+        padding: 20px;
+    }
+}
+
+
+/* ========================================
+   24. SMALL MOBILE DEVICES
+======================================== */
+
+@media (max-width: 480px) {
+
+    .logo h1 {
+        font-size: 22px;
+    }
+
+    nav ul {
+        flex-direction: column;
+
+        gap: 10px;
+    }
 
     .hero-text {
         font-size: 18px;
     }
 
-
     section h2 {
-        font-size: 26px;
+        font-size: 23px;
     }
 
+    .event-card {
+        padding: 20px;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    #registrationMessage {
+        padding: 16px;
+    }
 }
