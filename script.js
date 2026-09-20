@@ -52,7 +52,19 @@ form.addEventListener("submit", function (event) {
 
     registrationMessage.textContent =
         `Registration successful! Welcome, ${name}. You registered for ${eventName}.`;
+    const registration = {
+    name: name,
+    email: email,
+    department: department,
+    year: year,
+    reason: reason,
+    event: eventName
+    };
 
+    localStorage.setItem(
+        "registration",
+        JSON.stringify(registration)
+    );
 
     form.reset();
 
@@ -226,3 +238,29 @@ events.forEach(function(event) {
     dynamicEvents.appendChild(eventElement);
 
 });
+localStorage.clear();
+localStorage.setItem("studentYear", 2);
+localStorage.getItem("studentYear");
+const year = Number(localStorage.getItem("studentYear"));
+console.log(year);
+console.log(typeof year);
+localStorage.setItem("eventNames", JSON.stringify(eventNames));
+const savedEvents = localStorage.getItem("eventNames");
+
+console.log(savedEvents);
+const eventsArray = JSON.parse(savedEvents);
+
+console.log(eventsArray);
+console.log(Array.isArray(eventsArray));
+const student = {
+    name: "Devananda",
+    department: "CSE",
+    year: 2
+};
+localStorage.setItem("student", JSON.stringify(student));
+const savedStudent = JSON.parse(localStorage.getItem("student"));
+
+console.log(savedStudent);
+console.log(savedStudent.name);
+console.log(savedStudent.department);
+console.log(savedStudent.year);
