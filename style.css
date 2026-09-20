@@ -1,81 +1,418 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
 body {
     font-family: Arial, sans-serif;
+
     margin: 0;
+
     background-color: #f4f4f4;
+
+    color: #222;
 }
 
-h1 {
-    font-size: 48px;
-}
 
-button {
+/* =========================
+   HEADER
+========================= */
+
+header {
     background-color: #6c37a8;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 12px 24px;
+
+    color: white;
+
+    padding: 20px 40px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+
+.logo h1 {
+    margin: 0;
+
+    font-size: 32px;
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav ul {
+    display: flex;
+
+    gap: 25px;
+
+    list-style: none;
+
+    margin: 0;
+
+    padding: 0;
+}
+
+nav a {
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: bold;
+
     cursor: pointer;
 }
 
-.event-list {
-    display: flex;
-    gap: 16px;
+nav a:hover {
+    text-decoration: underline;
 }
 
-.event {
-    background-color: #6c37a8;
-    padding: 16px;
-    border: 1px solid #482293;
-    border-radius: 4px;
-    flex: 1;
-}
+
+/* =========================
+   MAIN
+========================= */
+
 main {
-    padding: 20px;
-    max-width: 1000px;
+    max-width: 1100px;
+
     margin: 0 auto;
+
+    padding: 30px 20px;
 }
-nav ul {
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    background-color: white;
+
+    padding: 40px;
+
+    border-radius: 12px;
+
+    margin-bottom: 40px;
+
+    text-align: center;
+}
+
+.hero-text {
+    font-size: 22px;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+button {
+    background-color: #6c37a8;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 6px;
+
+    padding: 12px 22px;
+
+    cursor: pointer;
+
+    font-size: 15px;
+}
+
+button:hover {
+    background-color: #542789;
+}
+
+
+/* =========================
+   SECTION HEADINGS
+========================= */
+
+section {
+    margin-bottom: 45px;
+}
+
+section h2 {
+    font-size: 30px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   EVENT LIST
+========================= */
+
+.event-list {
+    width: 100%;
+}
+
+
+/* =========================
+   DYNAMIC EVENTS
+========================= */
+
+#dynamicEvents {
     display: flex;
+
     gap: 20px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
+
+    width: 100%;
 }
-form {
+
+
+/* =========================
+   EVENT CARD
+========================= */
+
+.event-card {
+    background-color: #6c37a8;
+
+    color: white;
+
+    padding: 22px;
+
+    border-radius: 10px;
+
+    flex: 1;
+
+    min-height: 240px;
+
     display: flex;
+
     flex-direction: column;
+
+    justify-content: space-between;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+
+/* EVENT TITLE */
+
+.event-card h3 {
+    font-size: 22px;
+
+    margin-top: 0;
+
+    margin-bottom: 15px;
+}
+
+
+/* EVENT TEXT */
+
+.event-card p {
+    line-height: 1.5;
+
+    margin: 8px 0;
+}
+
+
+/* EVENT BUTTON */
+
+.event-card button {
+    background-color: white;
+
+    color: #6c37a8;
+
+    font-weight: bold;
+
+    margin-top: 15px;
+}
+
+.event-card button:hover {
+    background-color: #eeeeee;
+}
+
+
+/* =========================
+   EVENT MESSAGE
+========================= */
+
+#eventMessage {
+    margin-top: 20px;
+
+    padding: 12px;
+
+    background-color: #e8f5e9;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+form {
+    background-color: white;
+
+    padding: 25px;
+
+    border-radius: 10px;
+
+    display: flex;
+
+    flex-direction: column;
+
     gap: 10px;
 }
+
+
+/* =========================
+   INPUTS
+========================= */
+
 input,
 select,
 textarea {
-    padding: 10px;
     width: 100%;
+
+    padding: 12px;
+
     border: 1px solid #ccc;
-    border-radius: 4px;
+
+    border-radius: 6px;
+
+    font-size: 15px;
+
+    font-family: inherit;
 }
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+
+    border-color: #6c37a8;
 }
+
+
+/* =========================
+   LABELS
+========================= */
+
+label {
+    font-weight: bold;
+
+    margin-top: 8px;
+}
+
+
+/* =========================
+   REGISTRATION MESSAGE
+========================= */
+
+#registrationMessage {
+    margin-top: 20px;
+
+    padding: 12px;
+
+    background-color: #e8f5e9;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background-color: #6c37a8;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 20px;
+
+    margin-top: 40px;
+}
+
+
+/* =========================
+   HIGHLIGHT
+========================= */
+
+.highlight {
+    background-color: #fff3cd;
+
+    color: red;
+
+    font-size: 20px;
+
+    padding: 15px;
+
+    border-radius: 8px;
+
+    font-weight: bold;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
 @media (max-width: 768px) {
-    .event-list {
+
+    header {
+        flex-direction: column;
+
+        gap: 15px;
+
+        text-align: center;
+    }
+
+
+    nav ul {
+        gap: 15px;
+    }
+
+
+    #dynamicEvents {
         flex-direction: column;
     }
-}
-.highlight {
-    color: red;
-    background-color: #fff3cd;
-    font-size: 20px;
-    padding: 15px;
-    border-radius: 8px;
-    font-weight: bold;
-}
-#eventMessage {
-    margin-top: 20px;
-    padding: 12px;
-    background-color: #590481;
-    border-radius: 8px;
-    font-weight: bold;
+
+
+    .event-card {
+        width: 100%;
+    }
+
+
+    .hero {
+        padding: 25px 15px;
+    }
+
+
+    .hero-text {
+        font-size: 18px;
+    }
+
+
+    section h2 {
+        font-size: 26px;
+    }
+
 }

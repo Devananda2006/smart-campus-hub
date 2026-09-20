@@ -1,53 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
 
-    <title>Smart Campus Hub</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Smart Campus OS</title>
 
     <link rel="stylesheet" href="style.css">
-
 </head>
-
 
 <body>
 
-    <!-- ========================= -->
-    <!-- Header -->
-    <!-- ========================= -->
+    <!-- ============================= -->
+    <!-- HEADER -->
+    <!-- ============================= -->
 
     <header>
 
-        <h1>Smart Campus Hub</h1>
+        <div class="logo">
+            <h1>Smart Campus OS</h1>
+        </div>
 
         <nav>
-
             <ul>
 
-                <li>Home</li>
-                <li>Events</li>
-                <li>Clubs</li>
-                <li>Contact</li>
+                <li>
+                    <a href="#">Home</a>
+                </li>
+
+                <li>
+                    <a href="#events">Events</a>
+                </li>
+
+                <li>
+                    <a href="#registration">Register</a>
+                </li>
 
             </ul>
-
         </nav>
 
     </header>
 
 
+    <!-- ============================= -->
+    <!-- MAIN CONTENT -->
+    <!-- ============================= -->
 
     <main>
 
+        <!-- ============================= -->
+        <!-- HERO SECTION -->
+        <!-- ============================= -->
 
-        <!-- ========================= -->
-        <!-- Hero Section -->
-        <!-- ========================= -->
+        <section class="hero">
 
-        <section>
-
-            <p>
-                Everything happening on your campus, in one place.
+            <p class="hero-text">
+                Your campus. Your events. Your community.
             </p>
 
             <button id="exploreBtn">
@@ -57,116 +70,66 @@
         </section>
 
 
+        <!-- ============================= -->
+        <!-- EVENTS SECTION -->
+        <!-- ============================= -->
 
-        <!-- ========================= -->
-        <!-- Upcoming Events -->
-        <!-- ========================= -->
-
-        <section>
+        <section id="events">
 
             <h2>Upcoming Events</h2>
 
+            <!-- Search -->
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search events..."
+            >
 
+            <!-- Clear Search -->
+            <button
+                type="button"
+                id="clearSearchBtn"
+            >
+                Clear Search
+            </button>
+
+            <!-- Sort by Date -->
+            <button
+                type="button"
+                id="sortDateBtn"
+            >
+                Sort by Date
+            </button>
+
+
+            <!-- Dynamic Event Cards -->
             <div class="event-list">
 
-
-                <!-- Tech Fest -->
-
-                <article class="event">
-
-                    <h3>Tech Fest</h3>
-
-                    <p>
-                        Date: March 15, 2026
-                    </p>
-
-                    <p>
-                        A festival celebrating technology
-                        and innovation.
-                    </p>
-
-                    <button>
-                        View Details
-                    </button>
-
-                </article>
                 <div id="dynamicEvents"></div>
-
-
-
-                <!-- Hackathon -->
-
-                <article class="event">
-
-                    <h3>Hackathon</h3>
-
-                    <p>
-                        Date: April 20, 2026
-                    </p>
-
-                    <p>
-                        A 24-hour hackathon for students
-                        to showcase their skills.
-                    </p>
-
-                    <button>
-                        View Details
-                    </button>
-
-                </article>
-
-
-
-                <!-- Cultural Fest -->
-
-                <article class="event">
-
-                    <h3>Cultural Fest</h3>
-
-                    <p>
-                        Date: May 10, 2026
-                    </p>
-
-                    <p>
-                        A celebration of diverse cultures
-                        and traditions.
-                    </p>
-
-                    <button>
-                        View Details
-                    </button>
-
-                </article>
-
 
             </div>
 
 
-            <!-- Event message appears here -->
-
+            <!-- Event Details -->
             <p id="eventMessage"></p>
-
 
         </section>
 
 
+        <!-- ============================= -->
+        <!-- REGISTRATION SECTION -->
+        <!-- ============================= -->
 
-        <!-- ========================= -->
-        <!-- Event Registration -->
-        <!-- ========================= -->
-
-        <section>
+        <section id="registration">
 
             <h2>Register for an Event</h2>
 
-
             <form>
-
 
                 <!-- Name -->
 
                 <label for="name">
-                    Name:
+                    Name
                 </label>
 
                 <input
@@ -177,11 +140,10 @@
                 >
 
 
-
                 <!-- Email -->
 
                 <label for="email">
-                    Email:
+                    Email
                 </label>
 
                 <input
@@ -192,11 +154,10 @@
                 >
 
 
-
                 <!-- Department -->
 
                 <label for="department">
-                    Select Department:
+                    Select Department
                 </label>
 
                 <select
@@ -209,26 +170,25 @@
                         Select Department
                     </option>
 
-                    <option value="computer-science">
+                    <option value="Computer Science">
                         Computer Science
                     </option>
 
-                    <option value="electrical-engineering">
+                    <option value="Electrical Engineering">
                         Electrical Engineering
                     </option>
 
-                    <option value="mechanical-engineering">
+                    <option value="Mechanical Engineering">
                         Mechanical Engineering
                     </option>
 
                 </select>
 
 
-
                 <!-- Year -->
 
                 <label for="year">
-                    Select Year:
+                    Select Year
                 </label>
 
                 <select
@@ -260,7 +220,6 @@
                 </select>
 
 
-
                 <!-- Reason -->
 
                 <label for="reason">
@@ -275,11 +234,10 @@
                 ></textarea>
 
 
-
                 <!-- Event -->
 
                 <label for="event">
-                    Event:
+                    Event
                 </label>
 
                 <select
@@ -307,44 +265,40 @@
                 </select>
 
 
-
                 <!-- Register -->
 
                 <button type="submit">
                     Register
                 </button>
 
-
             </form>
 
 
-            <!-- Registration message -->
+            <!-- Registration Message -->
 
             <p id="registrationMessage"></p>
 
-
         </section>
-
 
     </main>
 
 
-
-    <!-- ========================= -->
-    <!-- Footer -->
-    <!-- ========================= -->
+    <!-- ============================= -->
+    <!-- FOOTER -->
+    <!-- ============================= -->
 
     <footer>
 
         <p>
-            Smart Campus Hub
+            Smart Campus OS
         </p>
 
     </footer>
 
 
-
-    <!-- JavaScript -->
+    <!-- ============================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ============================= -->
 
     <script src="script.js"></script>
 
