@@ -60,13 +60,14 @@ main h2 {
   border-radius: 8px;
 
   font-size: 16px;
-
   outline: none;
 }
 
 .search-section input:focus {
   border-color: #5b2c83;
-  box-shadow: 0 0 0 3px rgba(91, 44, 131, 0.1);
+
+  box-shadow:
+    0 0 0 3px rgba(91, 44, 131, 0.1);
 }
 
 .search-section p {
@@ -97,7 +98,7 @@ main h2 {
   color: #666;
 }
 
-/* Product Grid */
+/* Products */
 
 .product-grid {
   display: grid;
@@ -105,13 +106,9 @@ main h2 {
   gap: 20px;
 }
 
-/* Product Card */
-
 .product-card {
   background-color: white;
-
   padding: 22px;
-
   border-radius: 12px;
 
   box-shadow:
@@ -146,6 +143,104 @@ main h2 {
   line-height: 1.6;
 }
 
+/* Form */
+
+.form-section {
+  background-color: white;
+  margin-top: 50px;
+  padding: 30px;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.form-section h2 {
+  color: #5b2c83;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+}
+
+form label {
+  margin-top: 15px;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+form input,
+form select {
+  padding: 13px;
+
+  border: 1px solid #ccc;
+  border-radius: 7px;
+
+  font-size: 16px;
+
+  outline: none;
+}
+
+form input:focus,
+form select:focus {
+  border-color: #5b2c83;
+
+  box-shadow:
+    0 0 0 3px rgba(91, 44, 131, 0.1);
+}
+
+/* Buttons */
+
+.form-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.form-buttons button {
+  border: none;
+  border-radius: 7px;
+
+  padding: 12px 22px;
+
+  font-size: 15px;
+
+  cursor: pointer;
+
+  background-color: #5b2c83;
+  color: white;
+}
+
+.form-buttons button:hover {
+  background-color: #452066;
+}
+
+.form-buttons .reset-button {
+  background-color: #777;
+}
+
+.form-buttons .reset-button:hover {
+  background-color: #555;
+}
+
+/* Form Message */
+
+.form-message {
+  margin-top: 20px;
+  padding: 15px;
+
+  background-color: #eee7f5;
+
+  color: #5b2c83;
+
+  border-radius: 8px;
+
+  font-weight: bold;
+}
+
 /* Tablet */
 
 @media (max-width: 768px) {
@@ -170,6 +265,14 @@ main h2 {
 
   .product-grid {
     grid-template-columns: 1fr;
+  }
+
+  .form-section {
+    padding: 20px;
+  }
+
+  .form-buttons {
+    flex-direction: column;
   }
 
 }
