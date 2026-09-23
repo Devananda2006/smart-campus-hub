@@ -1,69 +1,84 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
-import Header from "./components/Header";
-import EventCard from "./components/EventCard";
 
 function App() {
 
-    const [loading, setLoading] = useState(false);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-    const events = [
-        {
-            name: "Tech Fest 2026",
-            date: "March 15, 2026",
-            description: "A campus-wide technology festival."
-        },
-        {
-            name: "24-Hour Hackathon",
-            date: "April 20, 2026",
-            description: "Build a solution to a real-world problem."
-        },
-        {
-            name: "AI Workshop",
-            date: "June 5, 2026",
-            description: "Learn the fundamentals of artificial intelligence."
-        }
-    ];
+  useEffect(function () {
 
-    function handleLoad() {
+    fetch("https://dummyjson.com/products")
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        setProducts(data.products);
+        setLoading(false);
+      })
+      .catch(function () {
+        setError("Failed to load products.");
+        setLoading(false);
+      });
 
-        setLoading(true);
+  }, []);
 
-        setTimeout(function() {
-            setLoading(false);
-        }, 2000);
-    }
+  return (
+    <div className="app">
 
-    return (
-        <div>
+      <header>
+        <h1>Smart Campus OS</h1>
+        <p>Learning React by working with real APIs</p>
+      </header>
 
-            <Header />
+      <main>
 
-            <main>
+        <h2>Products from API</h2>
 
-                <h2>Upcoming Events</h2>
+        {loading && (
+          <p className="status">
+            Loading products...
+          </p>
+        )}
 
-                <button onClick={handleLoad}>
-                    {loading ? "Loading..." : "Load Campus Events"}
-                </button>
+        {error && (
+          <p className="error">
+            {error}
+          </p>
+        )}
 
-                {events.map(function(event) {
+        <div className="product-grid">
 
-                    return (
-                        <EventCard
-                            key={event.name}
-                            name={event.name}
-                            date={event.date}
-                            description={event.description}
-                        />
-                    );
+          {products.map(function (product) {
 
-                })}
+            return (
+              <div
+                className="product-card"
+                key={product.id}
+              >
 
-            </main>
+                <h3>{product.title}</h3>
+
+                <p className="price">
+                  ${product.price}
+                </p>
+
+                <p className="description">
+                  {product.description}
+                </p>
+
+              </div>
+            );
+
+          })}
 
         </div>
-    );
+
+      </main>
+
+    </div>
+  );
 }
 
 export default App;
