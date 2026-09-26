@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
+  // API data
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -9,14 +10,21 @@ function App() {
   // Search
   const [search, setSearch] = useState("");
 
-  // Form
+  // Registration form
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [department, setDepartment] = useState("");
   const [year, setYear] = useState("");
 
-  // Form message
+  // Registration message
   const [message, setMessage] = useState("");
+
+  // Saved registration
+  const [registration, setRegistration] = useState(null);
+
+  // ------------------------------------------------
+  // Load products from API
+  // ------------------------------------------------
 
   useEffect(function () {
     fetch("https://dummyjson.com/products")
@@ -33,14 +41,41 @@ function App() {
       });
   }, []);
 
-  // Search filtering
+  // ------------------------------------------------
+  // Load registration from LocalStorage
+  // ------------------------------------------------
+
+  useEffect(function () {
+    const savedRegistration =
+      localStorage.getItem("registration");
+
+    if (savedRegistration) {
+      const parsedRegistration =
+        JSON.parse(savedRegistration);
+
+      setRegistration(parsedRegistration);
+
+      setName(parsedRegistration.name);
+      setEmail(parsedRegistration.email);
+      setDepartment(parsedRegistration.department);
+      setYear(parsedRegistration.year);
+    }
+  }, []);
+
+  // ------------------------------------------------
+  // Search products
+  // ------------------------------------------------
+
   const filteredProducts = products.filter(function (product) {
     return product.title
       .toLowerCase()
       .includes(search.toLowerCase());
   });
 
-  // Form submit
+  // ------------------------------------------------
+  // Register student
+  // ------------------------------------------------
+
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -54,12 +89,31 @@ function App() {
       return;
     }
 
+    const studentRegistration = {
+      name: name,
+      email: email,
+      department: department,
+      year: year
+    };
+
+    // Save to React state
+    setRegistration(studentRegistration);
+
+    // Save to LocalStorage
+    localStorage.setItem(
+      "registration",
+      JSON.stringify(studentRegistration)
+    );
+
     setMessage(
-      "Registration successful! Welcome, " + name + "."
+      "Registration successful! Your data has been saved."
     );
   }
 
+  // ------------------------------------------------
   // Reset form
+  // ------------------------------------------------
+
   function handleReset() {
     setName("");
     setEmail("");
@@ -68,24 +122,43 @@ function App() {
     setMessage("");
   }
 
+  // ------------------------------------------------
+  // Delete saved registration
+  // ------------------------------------------------
+
+  function handleDeleteRegistration() {
+    localStorage.removeItem("registration");
+
+    setRegistration(null);
+
+    setName("");
+    setEmail("");
+    setDepartment("");
+    setYear("");
+
+    setMessage("Saved registration deleted.");
+  }
+
   return (
     <div className="app">
 
-      {/* Header */}
-
+      {/* HEADER */}
       <header>
         <h1>Smart Campus OS</h1>
-        <p>React Forms and User Input</p>
+        <p>React + LocalStorage</p>
       </header>
 
       <main>
 
-        {/* Products */}
+        {/* ---------------------------------------- */}
+        {/* PRODUCTS */}
+        {/* ---------------------------------------- */}
 
         <section className="products-section">
 
           <h2>Products from API</h2>
 
+          {/* SEARCH */}
           <div className="search-section">
 
             <input
@@ -98,23 +171,27 @@ function App() {
             />
 
             <p>
-              Searching for: <strong>{search}</strong>
+              Searching for:{" "}
+              <strong>{search}</strong>
             </p>
 
           </div>
 
+          {/* LOADING */}
           {loading && (
             <p className="status">
               Loading products...
             </p>
           )}
 
+          {/* ERROR */}
           {error && (
             <p className="error">
               {error}
             </p>
           )}
 
+          {/* NO RESULTS */}
           {!loading &&
             !error &&
             filteredProducts.length === 0 && (
@@ -123,6 +200,7 @@ function App() {
               </p>
             )}
 
+          {/* PRODUCT CARDS */}
           <div className="product-grid">
 
             {filteredProducts.map(function (product) {
@@ -152,7 +230,10 @@ function App() {
 
         </section>
 
-        {/* Registration Form */}
+
+        {/* ---------------------------------------- */}
+        {/* REGISTRATION FORM */}
+        {/* ---------------------------------------- */}
 
         <section className="form-section">
 
@@ -160,9 +241,8 @@ function App() {
 
           <form onSubmit={handleSubmit}>
 
-            <label>
-              Name
-            </label>
+            {/* NAME */}
+            <label>Name</label>
 
             <input
               type="text"
@@ -173,9 +253,9 @@ function App() {
               }}
             />
 
-            <label>
-              Email
-            </label>
+
+            {/* EMAIL */}
+            <label>Email</label>
 
             <input
               type="email"
@@ -186,9 +266,9 @@ function App() {
               }}
             />
 
-            <label>
-              Department
-            </label>
+
+            {/* DEPARTMENT */}
+            <label>Department</label>
 
             <select
               value={department}
@@ -223,9 +303,9 @@ function App() {
 
             </select>
 
-            <label>
-              Year
-            </label>
+
+            {/* YEAR */}
+            <label>Year</label>
 
             <select
               value={year}
@@ -256,6 +336,8 @@ function App() {
 
             </select>
 
+
+            {/* BUTTONS */}
             <div className="form-buttons">
 
               <button type="submit">
@@ -274,6 +356,8 @@ function App() {
 
           </form>
 
+
+          {/* MESSAGE */}
           {message && (
             <p className="form-message">
               {message}
@@ -281,6 +365,52 @@ function App() {
           )}
 
         </section>
+
+
+        {/* ---------------------------------------- */}
+        {/* SAVED REGISTRATION */}
+        {/* ---------------------------------------- */}
+
+        {registration && (
+
+          <section className="saved-section">
+
+            <h2>Saved Registration</h2>
+
+            <div className="registration-card">
+
+              <p>
+                <strong>Name:</strong>{" "}
+                {registration.name}
+              </p>
+
+              <p>
+                <strong>Email:</strong>{" "}
+                {registration.email}
+              </p>
+
+              <p>
+                <strong>Department:</strong>{" "}
+                {registration.department}
+              </p>
+
+              <p>
+                <strong>Year:</strong>{" "}
+                {registration.year}
+              </p>
+
+              <button
+                className="delete-button"
+                onClick={handleDeleteRegistration}
+              >
+                Delete Saved Registration
+              </button>
+
+            </div>
+
+          </section>
+
+        )}
 
       </main>
 
