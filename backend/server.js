@@ -8,8 +8,16 @@ app.use(express.json());
 
 const PORT = 5000;
 
-// Temporary storage
-const registrations = [];
+// Temporary registration storage
+const registrations = [
+  {
+    id: 1,
+    name: "Devananda",
+    email: "student@example.com",
+    department: "CSE",
+    year: "2"
+  }
+];
 
 // Home route
 app.get("/", function (req, res) {
@@ -41,14 +49,20 @@ app.get("/api/events", function (req, res) {
 
 // POST - Create a registration
 app.post("/api/registrations", function (req, res) {
-  const registration = req.body;
+  const registration = {
+    id: registrations.length + 1,
+    name: req.body.name,
+    email: req.body.email,
+    department: req.body.department,
+    year: req.body.year
+  };
 
   registrations.push(registration);
 
   console.log("New registration:", registration);
 
   res.json({
-    message: "Registration received successfully!",
+    message: "Registration created successfully!",
     registration: registration
   });
 });
@@ -56,6 +70,31 @@ app.post("/api/registrations", function (req, res) {
 // GET - Get all registrations
 app.get("/api/registrations", function (req, res) {
   res.json(registrations);
+});
+
+// PUT - Update a registration
+app.put("/api/registrations/:id", function (req, res) {
+  const id = Number(req.params.id);
+
+  const registration = registrations.find(function (item) {
+    return item.id === id;
+  });
+
+  if (!registration) {
+    return res.status(404).json({
+      message: "Registration not found."
+    });
+  }
+
+  registration.name = req.body.name;
+  registration.email = req.body.email;
+  registration.department = req.body.department;
+  registration.year = req.body.year;
+
+  res.json({
+    message: "Registration updated successfully!",
+    registration: registration
+  });
 });
 
 // Start server
