@@ -5,13 +5,12 @@ function Registration() {
   const [email, setEmail] = useState("");
   const [department, setDepartment] = useState("");
   const [year, setYear] = useState("");
-
   const [message, setMessage] = useState("");
   const [registration, setRegistration] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(function () {
-    const savedRegistration =
-      localStorage.getItem("registration");
+    const savedRegistration = localStorage.getItem("registration");
 
     if (savedRegistration) {
       const data = JSON.parse(savedRegistration);
@@ -24,7 +23,7 @@ function Registration() {
     }
   }, []);
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
 
     if (
@@ -44,16 +43,41 @@ function Registration() {
       year: year
     };
 
-    localStorage.setItem(
-      "registration",
-      JSON.stringify(student)
-    );
+    setLoading(true);
+    setMessage("");
 
-    setRegistration(student);
+    try {
+      const response = await fetch(
+        "http://localhost:5000/api/registrations",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(student)
+        }
+      );
 
-    setMessage(
-      "Registration successful!"
-    );
+      if (!response.ok) {
+        throw new Error("Server error");
+      }
+
+      const data = await response.json();
+
+      setRegistration(data.registration);
+
+      localStorage.setItem(
+        "registration",
+        JSON.stringify(data.registration)
+      );
+
+      setMessage(data.message);
+    } catch (error) {
+      console.error(error);
+      setMessage("Could not connect to the backend.");
+    }
+
+    setLoading(false);
   }
 
   function handleReset() {
@@ -78,11 +102,9 @@ function Registration() {
 
   return (
     <div className="page">
-
       <h1>Campus Registration</h1>
 
       <form onSubmit={handleSubmit}>
-
         <label>Name</label>
 
         <input
@@ -113,10 +135,7 @@ function Registration() {
             setDepartment(event.target.value);
           }}
         >
-          <option value="">
-            Select department
-          </option>
-
+          <option value="">Select department</option>
           <option value="CSE">CSE</option>
           <option value="ECE">ECE</option>
           <option value="EEE">EEE</option>
@@ -132,10 +151,7 @@ function Registration() {
             setYear(event.target.value);
           }}
         >
-          <option value="">
-            Select year
-          </option>
-
+          <option value="">Select year</option>
           <option value="1">First Year</option>
           <option value="2">Second Year</option>
           <option value="3">Third Year</option>
@@ -143,20 +159,14 @@ function Registration() {
         </select>
 
         <div className="form-buttons">
-
-          <button type="submit">
-            Register
+          <button type="submit" disabled={loading}>
+            {loading ? "Sending..." : "Register"}
           </button>
 
-          <button
-            type="button"
-            onClick={handleReset}
-          >
+          <button type="button" onClick={handleReset}>
             Reset
           </button>
-
         </div>
-
       </form>
 
       {message && (
@@ -167,36 +177,29 @@ function Registration() {
 
       {registration && (
         <div className="saved-section">
-
           <h2>Saved Registration</h2>
 
           <p>
-            <strong>Name:</strong>{" "}
-            {registration.name}
+            <strong>Name:</strong> {registration.name}
           </p>
 
           <p>
-            <strong>Email:</strong>{" "}
-            {registration.email}
+            <strong>Email:</strong> {registration.email}
           </p>
 
           <p>
-            <strong>Department:</strong>{" "}
-            {registration.department}
+            <strong>Department:</strong> {registration.department}
           </p>
 
           <p>
-            <strong>Year:</strong>{" "}
-            {registration.year}
+            <strong>Year:</strong> {registration.year}
           </p>
 
           <button onClick={handleDelete}>
             Delete Registration
           </button>
-
         </div>
       )}
-
     </div>
   );
 }
